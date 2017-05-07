@@ -1,5 +1,8 @@
 from rest_framework import serializers
 
+from taggit_serializer.serializers import (TagListSerializerField,
+                                           TaggitSerializer)
+
 from .. import models
 
 
@@ -42,7 +45,20 @@ class CategorySerializer(serializers.ModelSerializer):
         exclude = set()
 
 
-class PostSerializer(serializers.ModelSerializer):
+class TagField(serializers.ListField):
+
+    """
+    Color objects are serialized into 'rgb(#, #, #)' notation.
+    """
+    def to_representation(self, obj):
+        return map(str, getattr(obj, self.source))
+
+    def to_internal_value(self, data):
+        return data
+
+
+class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
+    tags = TagListSerializerField()
 
     class Meta:
         model = models.Post

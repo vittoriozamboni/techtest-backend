@@ -1,7 +1,9 @@
 django
+django-cors-headers
 django-extensions
 django-filter
 django-tagulous
+django-taggit-serializer>=0.1.5
 djangorestframework
 ipython
 markdown
