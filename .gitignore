@@ -91,5 +91,8 @@ ENV/
 #IDEA
 .idea
 
+#VSCODE
+.vscode
+
 #DB
 techtest/techtest/db.sqlite3

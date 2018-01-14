@@ -5,5 +5,5 @@ django-filter
 django-tagulous
 django-taggit-serializer>=0.1.5
 djangorestframework
-ipython
+ipython<6
 markdown
