@@ -11,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.User
-        fields = ('username', 'first_name', 'last_name', 'full_name')
+        fields = ('username', 'first_name', 'last_name', 'full_name', 'id')
 
     def get_full_name(self, user):
         return user.get_full_name()
@@ -58,7 +58,7 @@ class TagField(serializers.ListField):
 
 
 class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
-    tags = TagListSerializerField()
+    tags = TagListSerializerField(required=False)
 
     class Meta:
         model = models.Post
